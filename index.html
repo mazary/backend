@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Edgar Domingo – Asesor Académico</title>
-
   <style>
     body {
       background-color: #fffde7;
@@ -13,7 +12,6 @@
       margin: 0;
       padding: 0;
     }
-
     header {
       background-color: #1a237e;
       color: #fff;
@@ -23,20 +21,17 @@
       padding: 1.5em 2em;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     }
-
     header img {
       width: 130px;
       height: auto;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
     }
-
     main {
       padding: 2em;
       max-width: 900px;
       margin: auto;
     }
-
     section {
       background-color: #fff9c4;
       padding: 1.5em;
@@ -44,22 +39,18 @@
       margin-bottom: 2em;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     }
-
     h1, h2 {
       margin-top: 0;
       font-weight: 700;
     }
-
     a {
       color: #1a237e;
       font-weight: bold;
       text-decoration: none;
     }
-
     a:hover {
       text-decoration: underline;
     }
-
     button {
       padding: 0.5em 1em;
       background-color: #1a237e;
@@ -69,14 +60,12 @@
       cursor: pointer;
       font-weight: bold;
     }
-
     #comentariosLista p {
       background: #fff;
       padding: 0.5em 1em;
       margin: 0.5em 0;
       border-left: 4px solid #1a237e;
     }
-
     textarea {
       width: 100%;
       padding: 0.7em;
@@ -84,7 +73,6 @@
       border: 1px solid #ccc;
       resize: vertical;
     }
-
     footer {
       text-align: center;
       background-color: #1a237e;
@@ -92,41 +80,61 @@
       padding: 1.5em 2em;
       font-size: 1em;
     }
-
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    ul li {
+      margin: 0.6em 0;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.6em;
+      font-size: 1em;
+    }
+    .icon {
+      font-size: 1.2em;
+    }
+    .icon.clock {
+      color: #fbc02d; /* amarillo reloj de arena */
+    }
+    .icon.green-arrow {
+      color: #2e7d32; /* verde */
+    }
+    .icon.red {
+      color: #c62828; /* rojo */
+    }
+    .profesor {
+      font-size: 0.85em;
+      color: #424242;
+      margin-left: 1.8em;
+      font-style: italic;
+    }
     /* Media query para móviles */
     @media (max-width: 600px) {
       main {
         padding: 1em;
         max-width: 100%;
       }
-
       header {
         flex-direction: column;
         text-align: center;
         padding: 1em;
       }
-
       header img {
         width: 100px;
         margin-bottom: 0.5em;
       }
-
       button {
         width: 100%;
         padding: 1em;
         font-size: 1.1em;
       }
-
       textarea {
         font-size: 1em;
       }
-
       section {
         padding: 1em;
-      }
-
-      ul {
-        padding-left: 1.2em;
       }
     }
   </style>
@@ -134,7 +142,6 @@
 <body>
   <header>
     <img src="vision2025.png" alt="Logo de la UAS" />
-
     <h1>Edgar Domingo - Asesor Académico</h1>
   </header>
 
@@ -145,24 +152,15 @@
 
     <section id="sobre-mi">
       <h2>Sobre mí</h2>
-      <p>Soy un apasionado estudiante y asesor académico con un fuerte interés en el desarrollo integral del conocimiento. Mi enfoque se basa en combinar una comprensión profunda de la historia y las ciencias con una sensibilidad hacia las necesidades reales de quienes aprenden. Creo en el poder del aprendizaje colaborativo y en construir espacios donde todos puedan crecer, cuestionar y descubrir.
-
-Más allá de los libros, me interesa conectar el saber académico con la vida diaria y los retos actuales. La educación, para mí, es una herramienta vital para transformar no solo nuestro entorno, sino también nuestro pensamiento y nuestra manera de relacionarnos.
-
-En esta página encontrarás no solo recursos y asesorías, sino un compromiso real conmigo mismo y con mis compañeros: aprender, apoyar y avanzar juntos sin falsas pretensiones.
-</p>
+      <p>Soy un apasionado estudiante y asesor académico con un fuerte interés en el desarrollo integral del conocimiento. Mi enfoque se basa en combinar una comprensión profunda de la historia y las ciencias con una sensibilidad hacia las necesidades reales de quienes aprenden. Creo en el poder del aprendizaje colaborativo y en construir espacios donde todos puedan crecer, cuestionar y descubrir.<br><br>
+      Más allá de los libros, me interesa conectar el saber académico con la vida diaria y los retos actuales. La educación, para mí, es una herramienta vital para transformar no solo nuestro entorno, sino también nuestro pensamiento y nuestra manera de relacionarnos.<br><br>
+      En esta página encontrarás no solo recursos y asesorías, sino un compromiso real conmigo mismo y con mis compañeros: aprender, apoyar y avanzar juntos sin falsas pretensiones.</p>
     </section>
 
     <section id="horario">
       <h2>Horario de Clases</h2>
-      <ul>
-        <li>08:00 - 08:40 → Historia 3</li>
-        <li>08:40 - 09:20 → Biología 3</li>
-        <li>09:20 - 10:00 → Física 3</li>
-        <li>10:20 - 11:00 → Lenguaje 3</li>
-        <li>11:00 - 11:40 → Literatura 3</li>
-        <li>12:40 - 13:20 → Matemáticas3</li>
-        <li>13:20 - 14:00 → Filosofía 3</li>
+      <ul id="listaHorario">
+        <!-- Se llena por JavaScript -->
       </ul>
     </section>
 
@@ -194,10 +192,10 @@ En esta página encontrarás no solo recursos y asesorías, sino un compromiso r
   </footer>
 
   <script>
+    // Comentarios persistentes
     const lista = document.getElementById('comentariosLista');
     const comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
     comentariosGuardados.forEach(m => renderComentario(m));
-
     function guardarComentario() {
       const input = document.getElementById('comentarioInput');
       const texto = input.value.trim();
@@ -207,12 +205,66 @@ En esta página encontrarás no solo recursos y asesorías, sino un compromiso r
       renderComentario(texto);
       input.value = '';
     }
-
     function renderComentario(texto) {
       const p = document.createElement('p');
       p.textContent = texto;
       lista.appendChild(p);
     }
+
+    // Horario con estado en tiempo real
+    const clases = [
+      {inicio: "08:00", fin: "08:40", materia: "Historia 3", profesor: "Profa. Juárez"},
+      {inicio: "08:40", fin: "09:20", materia: "Biología 3", profesor: "Profe. Gómez"},
+      {inicio: "09:20", fin: "10:00", materia: "Física 3", profesor: "Profe. Ramírez"},
+      {inicio: "10:20", fin: "11:00", materia: "Lenguaje 3", profesor: "Profa. Sánchez"},
+      {inicio: "11:00", fin: "11:40", materia: "Literatura 3", profesor: "Profe. Morales"},
+      {inicio: "12:40", fin: "13:20", materia: "Matemáticas 3", profesor: "Profe. Castillo"},
+      {inicio: "13:20", fin: "14:00", materia: "Filosofía 3", profesor: "Profa. Torres"},
+    ];
+
+    // Convierte "HH:mm" a minutos desde medianoche para comparar más fácil
+    function tiempoAMinutos(t) {
+      const [h, m] = t.split(":").map(Number);
+      return h * 60 + m;
+    }
+
+    function estadoClase(inicio, fin, ahora) {
+      const ini = tiempoAMinutos(inicio);
+      const fi = tiempoAMinutos(fin);
+      if (ahora < ini) return "antes";         // Falta que empiece
+      if (ahora >= ini && ahora <= fi) return "en curso";  // Clase en curso
+      if (ahora > fi) return "pasada";        // Clase ya pasó
+    }
+
+    function actualizarHorario() {
+      const ul = document.getElementById('listaHorario');
+      ul.innerHTML = "";
+      const ahora = new Date();
+      const ahoraMinutos = ahora.getHours() * 60 + ahora.getMinutes();
+
+      clases.forEach(({inicio, fin, materia, profesor}) => {
+        const estado = estadoClase(inicio, fin, ahoraMinutos);
+        let icono = "";
+        let claseColor = "";
+        if (estado === "antes") {
+          icono = "⏳";   // Reloj de arena amarillo
+          claseColor = "clock";
+        } else if (estado === "en curso") {
+          icono = "➡️";   // Flecha verde
+          claseColor = "green-arrow";
+        } else if (estado === "pasada") {
+          icono = "✔️";   // Check para clase pasada (podrías usar otro)
+          claseColor = "green-arrow";
+        }
+        const li = document.createElement("li");
+        li.innerHTML = `<span class="icon ${claseColor}">${icono}</span> ${inicio} - ${fin} → ${materia} <div class="profesor">Profesor: ${profesor}</div>`;
+        ul.appendChild(li);
+      });
+    }
+
+    actualizarHorario();
+    // Actualiza cada minuto para que cambie el estado solo
+    setInterval(actualizarHorario, 60000);
   </script>
 </body>
 </html>
