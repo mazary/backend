@@ -96,13 +96,13 @@
       font-size: 1.2em;
     }
     .icon.clock {
-      color: #fbc02d; /* amarillo reloj de arena */
+      color: #fbc02d;
     }
     .icon.green-arrow {
-      color: #2e7d32; /* verde */
+      color: #2e7d32;
     }
     .icon.red {
-      color: #c62828; /* rojo */
+      color: #c62828;
     }
     .profesor {
       font-size: 0.85em;
@@ -110,7 +110,6 @@
       margin-left: 1.8em;
       font-style: italic;
     }
-    /* Media query para móviles */
     @media (max-width: 600px) {
       main {
         padding: 1em;
@@ -150,39 +149,16 @@
       <p>Hola, soy <strong>Edgar Domingo</strong>, tu asesor académico. Estoy aquí para ayudarte en materias como historia, ciencias, biología y literatura. Si tienes dudas o tareas difíciles, juntos las investigaremos y resolveremos. Esta página es para ti, para nosotros.</p>
     </section>
 
-    <section id="sobre-mi">
-      <h2>Sobre mí</h2>
-      <p>Soy un apasionado estudiante y asesor académico con un fuerte interés en el desarrollo integral del conocimiento. Mi enfoque se basa en combinar una comprensión profunda de la historia y las ciencias con una sensibilidad hacia las necesidades reales de quienes aprenden. Creo en el poder del aprendizaje colaborativo y en construir espacios donde todos puedan crecer, cuestionar y descubrir.<br><br>
-      Más allá de los libros, me interesa conectar el saber académico con la vida diaria y los retos actuales. La educación, para mí, es una herramienta vital para transformar no solo nuestro entorno, sino también nuestro pensamiento y nuestra manera de relacionarnos.<br><br>
-      En esta página encontrarás no solo recursos y asesorías, sino un compromiso real conmigo mismo y con mis compañeros: aprender, apoyar y avanzar juntos sin falsas pretensiones.</p>
-    </section>
-
     <section id="horario">
-      <h2>Horario de Clases</h2>
-      <ul id="listaHorario">
-        <!-- Se llena por JavaScript -->
-      </ul>
-    </section>
-
-    <section id="drive">
-      <h2>Asesorías y Tareas</h2>
-      <p>Todas las tareas, asesorías y guías están en esta carpeta de Drive:</p>
-      <p><a href="https://drive.google.com/drive/folders/1j9v7pfF6XpHF7ePlAslw3KM3E68UMaK_?usp=drive_link" target="_blank">Acceder a Drive</a></p>
+      <h2>Horario de Clases V-5</h2>
+      <ul id="listaHorario"></ul>
     </section>
 
     <section id="comentarios">
       <h2>Comentarios del Salón</h2>
-      <p>Deja tu opinión, queja o mensaje para todos. Esto no se borra, se queda en la página.</p>
       <textarea id="comentarioInput" placeholder="Escribe aquí tu mensaje..." rows="4"></textarea><br><br>
       <button onclick="guardarComentario()">Publicar mensaje</button>
       <div id="comentariosLista"></div>
-    </section>
-
-    <section id="contacto">
-      <h2>Contacto</h2>
-      <p><strong>Correo:</strong> <a href="mailto:colvin0001@gmail.com">colvin0001@gmail.com</a></p>
-      <p><strong>WhatsApp:</strong> <a href="https://wa.me/526677988755" target="_blank" rel="noopener noreferrer">667 798 8755</a></p>
-      <p><strong>Facebook:</strong> <a href="https://www.facebook.com/fromalazka" target="_blank" rel="noopener noreferrer">facebook.com/fromalazka</a></p>
     </section>
   </main>
 
@@ -211,60 +187,13 @@
       lista.appendChild(p);
     }
 
-    // Horario con estado en tiempo real
+    // Horario con clases de 1 hora
     const clases = [
-      {inicio: "08:00", fin: "08:40", materia: "Historia 3", profesor: "Profa. Juárez"},
-      {inicio: "08:40", fin: "09:20", materia: "Biología 3", profesor: "Profe. Gómez"},
-      {inicio: "09:20", fin: "10:00", materia: "Física 3", profesor: "Profe. Ramírez"},
-      {inicio: "10:20", fin: "11:00", materia: "Lenguaje 3", profesor: "Profa. Sánchez"},
-      {inicio: "11:00", fin: "11:40", materia: "Literatura 3", profesor: "Profe. Morales"},
-      {inicio: "12:40", fin: "13:20", materia: "Matemáticas 3", profesor: "Profe. Castillo"},
-      {inicio: "13:20", fin: "14:00", materia: "Filosofía 3", profesor: "Profa. Torres"},
-    ];
-
-    // Convierte "HH:mm" a minutos desde medianoche para comparar más fácil
-    function tiempoAMinutos(t) {
-      const [h, m] = t.split(":").map(Number);
-      return h * 60 + m;
-    }
-
-    function estadoClase(inicio, fin, ahora) {
-      const ini = tiempoAMinutos(inicio);
-      const fi = tiempoAMinutos(fin);
-      if (ahora < ini) return "antes";         // Falta que empiece
-      if (ahora >= ini && ahora <= fi) return "en curso";  // Clase en curso
-      if (ahora > fi) return "pasada";        // Clase ya pasó
-    }
-
-    function actualizarHorario() {
-      const ul = document.getElementById('listaHorario');
-      ul.innerHTML = "";
-      const ahora = new Date();
-      const ahoraMinutos = ahora.getHours() * 60 + ahora.getMinutes();
-
-      clases.forEach(({inicio, fin, materia, profesor}) => {
-        const estado = estadoClase(inicio, fin, ahoraMinutos);
-        let icono = "";
-        let claseColor = "";
-        if (estado === "antes") {
-          icono = "⏳";   // Reloj de arena amarillo
-          claseColor = "clock";
-        } else if (estado === "en curso") {
-          icono = "➡️";   // Flecha verde
-          claseColor = "green-arrow";
-        } else if (estado === "pasada") {
-          icono = "✔️";   // Check para clase pasada (podrías usar otro)
-          claseColor = "green-arrow";
-        }
-        const li = document.createElement("li");
-        li.innerHTML = `<span class="icon ${claseColor}">${icono}</span> ${inicio} - ${fin} → ${materia} <div class="profesor">Profesor: ${profesor}</div>`;
-        ul.appendChild(li);
-      });
-    }
-
-    actualizarHorario();
-    // Actualiza cada minuto para que cambie el estado solo
-    setInterval(actualizarHorario, 60000);
-  </script>
-</body>
-</html>
+      {inicio: "07:00", fin: "08:00", materia: "Psicología del Desarrollo Humano", profesor: "Larios Sánchez Karla Teresita"},
+      {inicio: "08:00", fin: "09:00", materia: "Literatura II", profesor: "Carrillo Quiroz Carlos Elías"},
+      {inicio: "09:00", fin: "10:00", materia: "Ética y Desarrollo Humano", profesor: "Medina Bastidas José María"},
+      {inicio: "10:00", fin: "11:00", materia: "Metodología de la Investigación", profesor: "Medina Bastidas José María"},
+      {inicio: "11:00", fin: "12:00", materia: "Elementos Básicos de Administración", profesor: "De la Torre López Maricruz"},
+      {inicio: "12:00", fin: "01:00", materia: "Hombre, Sociedad y Cultura", profesor: "Amador Vega Rosa Icela"},
+      {inicio: "01:00", fin: "02:00", materia: "Estadística", profesor: "Higuera Barrueta José Hilario"},
+      {inicio: "02:00
