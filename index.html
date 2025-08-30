@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Edgar Domingo – Asesor Académico</title>
   <style>
+    * { box-sizing: border-box; }
+
     body {
       background-color: #fffde7;
       color: #1a237e;
@@ -12,60 +14,61 @@
       margin: 0;
       padding: 0;
     }
+
     header {
       background-color: #1a237e;
       color: #fff;
       display: flex;
       align-items: center;
       gap: 1em;
-      padding: 1.5em 2em;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      padding: 1em;
+      flex-wrap: wrap;
     }
+
     header img {
-      width: 130px;
+      width: 100px;
       height: auto;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
     }
-    main {
-      padding: 2em;
-      max-width: 900px;
-      margin: auto;
-    }
+
+    header h1 { font-size: 1.3em; margin: 0; }
+
+    main { padding: 1em; max-width: 900px; margin: auto; }
+
     section {
       background-color: #fff9c4;
-      padding: 1.5em;
+      padding: 1em;
       border-radius: 12px;
-      margin-bottom: 2em;
+      margin-bottom: 1.5em;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     }
-    h1, h2 {
-      margin-top: 0;
-      font-weight: 700;
-    }
-    a {
-      color: #1a237e;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+
+    h1, h2 { margin-top: 0; font-weight: 700; }
+
+    a { color: #1a237e; font-weight: bold; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
     button {
-      padding: 0.5em 1em;
+      width: 100%;
+      padding: 0.8em;
       background-color: #1a237e;
       color: #fffde7;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-weight: bold;
+      font-size: 1em;
+      margin-top: 0.5em;
     }
+
     #comentariosLista p {
       background: #fff;
       padding: 0.5em 1em;
       margin: 0.5em 0;
       border-left: 4px solid #1a237e;
     }
+
     textarea {
       width: 100%;
       padding: 0.7em;
@@ -73,69 +76,26 @@
       border: 1px solid #ccc;
       resize: vertical;
     }
+
     footer {
       text-align: center;
       background-color: #1a237e;
       color: #fffde7;
-      padding: 1.5em 2em;
-      font-size: 1em;
+      padding: 1em;
+      font-size: 0.9em;
     }
-    ul {
-      list-style: none;
-      padding-left: 0;
+
+    @media (min-width: 600px) {
+      header { flex-wrap: nowrap; }
+      button { width: auto; }
     }
-    ul li {
-      margin: 0.6em 0;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.6em;
-      font-size: 1em;
-    }
-    .icon {
-      font-size: 1.2em;
-    }
-    .icon.clock {
-      color: #fbc02d;
-    }
-    .icon.green-arrow {
-      color: #2e7d32;
-    }
-    .icon.red {
-      color: #c62828;
-    }
-    .profesor {
-      font-size: 0.85em;
-      color: #424242;
-      margin-left: 1.8em;
-      font-style: italic;
-    }
-    @media (max-width: 600px) {
-      main {
-        padding: 1em;
-        max-width: 100%;
-      }
-      header {
-        flex-direction: column;
-        text-align: center;
-        padding: 1em;
-      }
-      header img {
-        width: 100px;
-        margin-bottom: 0.5em;
-      }
-      button {
-        width: 100%;
-        padding: 1em;
-        font-size: 1.1em;
-      }
-      textarea {
-        font-size: 1em;
-      }
-      section {
-        padding: 1em;
-      }
-    }
+
+    /* Estilos para la tabla del horario */
+    #tablaHorario { width:100%; border-collapse: collapse; text-align:left; }
+    #tablaHorario th, #tablaHorario td { padding:8px; border-bottom:1px solid #1a237e; }
+    .pendiente { background-color: #fff59d; } /* amarillo */
+    .enCurso { background-color: #90caf9; font-weight:bold; } /* azul claro */
+    .terminada { background-color: #a5d6a7; } /* verde */
   </style>
 </head>
 <body>
@@ -149,51 +109,94 @@
       <p>Hola, soy <strong>Edgar Domingo</strong>, tu asesor académico. Estoy aquí para ayudarte en materias como historia, ciencias, biología y literatura. Si tienes dudas o tareas difíciles, juntos las investigaremos y resolveremos. Esta página es para ti, para nosotros.</p>
     </section>
 
+    <section id="sobre-mi">
+      <h2>Sobre mí</h2>
+      <p>Soy un apasionado estudiante y asesor académico con un fuerte interés en el desarrollo integral del conocimiento. Mi enfoque se basa en combinar una comprensión profunda de la historia y las ciencias con una sensibilidad hacia las necesidades reales de quienes aprenden.</p>
+    </section>
+
+    <!-- Sección de horario dinámica -->
     <section id="horario">
-      <h2>Horario de Clases V-5</h2>
-      <ul id="listaHorario"></ul>
+      <h2>Horario de Clases</h2>
+      <table id="tablaHorario">
+        <tr>
+          <th>Hora</th>
+          <th>Materia</th>
+          <th>Profesor(a)</th>
+          <th>Estado</th>
+        </tr>
+        <tr data-inicio="7" data-duracion="60">
+          <td>07:00</td>
+          <td>Psicología del Desarrollo Humano</td>
+          <td>Larios Sánchez Karla Teresita</td>
+          <td class="estado">⏳</td>
+        </tr>
+        <tr data-inicio="8" data-duracion="60">
+          <td>08:00</td>
+          <td>Literatura II</td>
+          <td>Carrillo Quiroz Carlos Elías</td>
+          <td class="estado">⏳</td>
+        </tr>
+        <tr data-inicio="9" data-duracion="60">
+          <td>09:00</td>
+          <td>Ética y Desarrollo Humano</td>
+          <td>Medina Bastidas José María</td>
+          <td class="estado">⏳</td>
+        </tr>
+        <tr data-inicio="10" data-duracion="60">
+          <td>10:00</td>
+          <td>Metodología de la Investigación</td>
+          <td>Medina Bastidas José María</td>
+          <td class="estado">⏳</td>
+        </tr>
+        <tr data-inicio="11.5" data-duracion="60">
+          <td>11:30</td>
+          <td>Elementos Básicos de Administración</td>
+          <td>De la Torre López Maricruz</td>
+          <td class="estado">⏳</td>
+        </tr>
+        <tr data-inicio="12.5" data-duracion="60">
+          <td>12:30</td>
+          <td>Hombre, Sociedad y Cultura</td>
+          <td>Amador Vega Rosa Icela</td>
+          <td class="estado">⏳</td>
+        </tr>
+        <tr data-inicio="13.5" data-duracion="60">
+          <td>13:30</td>
+          <td>Estadística</td>
+          <td>Higuera Barrueta José Hilario</td>
+          <td class="estado">⏳</td>
+        </tr>
+        <tr data-inicio="14" data-duracion="30">
+          <td>14:00</td>
+          <td>Educación para la Salud</td>
+          <td>Camacho Castro Miriam Edith</td>
+          <td class="estado">⏳</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="drive">
+      <h2>Asesorías y Tareas</h2>
+      <p>Todas las tareas están en esta carpeta de Drive:</p>
+      <p><a href="https://drive.google.com/drive/folders/1j9v7pfF6XpHF7ePlAslw3KM3E68UMaK_?usp=drive_link" target="_blank">Acceder a Drive</a></p>
     </section>
 
     <section id="comentarios">
       <h2>Comentarios del Salón</h2>
-      <textarea id="comentarioInput" placeholder="Escribe aquí tu mensaje..." rows="4"></textarea><br><br>
+      <textarea id="comentarioInput" placeholder="Escribe tu mensaje..." rows="3"></textarea>
       <button onclick="guardarComentario()">Publicar mensaje</button>
       <div id="comentariosLista"></div>
     </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p><strong>Correo:</strong> <a href="mailto:colvin0001@gmail.com">colvin0001@gmail.com</a></p>
+      <p><strong>WhatsApp:</strong> <a href="https://wa.me/526677988755" target="_blank">667 798 8755</a></p>
+      <p><strong>Facebook:</strong> <a href="https://www.facebook.com/fromalazka" target="_blank">facebook.com/fromalazka</a></p>
+    </section>
   </main>
 
-  <footer>
-    <p>Creado por <strong>Edgar Domingo</strong> – Universidad Autónoma de Sinaloa (UAS) – 2025</p>
-    <p><em>"Juntos, sin dejar a nadie en el camino."</em></p>
-  </footer>
-
-  <script>
-    // Comentarios persistentes
-    const lista = document.getElementById('comentariosLista');
-    const comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
-    comentariosGuardados.forEach(m => renderComentario(m));
-    function guardarComentario() {
-      const input = document.getElementById('comentarioInput');
-      const texto = input.value.trim();
-      if (!texto) return;
-      comentariosGuardados.push(texto);
-      localStorage.setItem('comentarios', JSON.stringify(comentariosGuardados));
-      renderComentario(texto);
-      input.value = '';
-    }
-    function renderComentario(texto) {
-      const p = document.createElement('p');
-      p.textContent = texto;
-      lista.appendChild(p);
-    }
-
-    // Horario con clases de 1 hora
-    const clases = [
-      {inicio: "07:00", fin: "08:00", materia: "Psicología del Desarrollo Humano", profesor: "Larios Sánchez Karla Teresita"},
-      {inicio: "08:00", fin: "09:00", materia: "Literatura II", profesor: "Carrillo Quiroz Carlos Elías"},
-      {inicio: "09:00", fin: "10:00", materia: "Ética y Desarrollo Humano", profesor: "Medina Bastidas José María"},
-      {inicio: "10:00", fin: "11:00", materia: "Metodología de la Investigación", profesor: "Medina Bastidas José María"},
-      {inicio: "11:00", fin: "12:00", materia: "Elementos Básicos de Administración", profesor: "De la Torre López Maricruz"},
-      {inicio: "12:00", fin: "01:00", materia: "Hombre, Sociedad y Cultura", profesor: "Amador Vega Rosa Icela"},
-      {inicio: "01:00", fin: "02:00", materia: "Estadística", profesor: "Higuera Barrueta José Hilario"},
-      {inicio: "02:00
+<footer>
+  <img src="a4554063-65ae-4b26-86b1-96e23280f419.jpg" alt="Edgar Domingo" style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; box-shadow: 0 0 6px rgba(0,0,0,0.3);">
+  <p>Creado por <strong>Edgar Domingo</strong> – UAS 2025</p>
+  <p><em>"Juntos
