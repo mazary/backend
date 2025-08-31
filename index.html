@@ -5,158 +5,171 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Edgar Domingo – Asesor Académico</title>
   <style>
-    * { box-sizing: border-box; margin:0; padding:0; }
-
     body {
-      background-color: #fffde7;
-      color: #1a237e;
       font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
     }
-
     header {
-      background-color: #1a237e;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 1em;
-      padding: 1em;
-      flex-wrap: wrap;
+      background: #004080;
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
     }
-
     header img {
-      width: 120px;
+      width: 100px;
       height: auto;
-      border-radius: 10px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+      margin-bottom: 10px;
     }
-
-    header h1 { font-size: 2.7em; font-weight: bold; line-height: 1.2; }
-    header span { display: block; font-size: 1.2em; }
-
-    main { padding: 1em; max-width: 900px; margin: auto; }
-
-    section {
-      background-color: #fff9c4;
-      padding: 1em;
-      border-radius: 12px;
-      margin-bottom: 1.5em;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
     }
-
-    h1,h2 { margin-top:0; }
-    a { color:#1a237e; font-weight:bold; text-decoration:none; }
-    a:hover { text-decoration:underline; }
-
-    button {
-      background-color: #fff9c4;
-      color:#1a237e;
-      border:none;
-      padding:0.7em 1em;
-      border-radius:5px;
-      font-weight:bold;
-      margin-top:0.5em;
-      cursor:pointer;
+    h1, h2 {
+      color: #004080;
     }
-
-    textarea {
+    table {
       width: 100%;
-      padding: 0.7em;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      resize: vertical;
-    }
-
-    #comentariosLista p {
-      background: #fff3c1;
-      padding: 0.5em 1em;
-      margin: 0.5em 0;
-      border-left: 4px solid #1a237e;
-    }
-
-    #tablaHorario {
-      width:100%;
       border-collapse: collapse;
-      text-align:left;
+      margin: 20px 0;
     }
-
-    #tablaHorario th, #tablaHorario td {
-      padding:8px;
-      border-bottom:1px solid #1a237e;
+    table, th, td {
+      border: 1px solid #ddd;
     }
-
+    th, td {
+      padding: 12px;
+      text-align: center;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
     footer {
       text-align: center;
-      background-color: #1a237e;
-      color: #fffde7;
-      padding: 2em 1em;
-      font-weight: bold;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
+      padding: 15px;
+      background: #004080;
+      color: white;
+      margin-top: 20px;
     }
-
-    @media (min-width:600px){
-      header{flex-wrap:nowrap;}
-      button{width:auto;}
+    .intro {
+      background: #e9ecef;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .comentarios {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f1f1f1;
+      border-radius: 8px;
+    }
+    .comentarios textarea {
+      width: 100%;
+      height: 80px;
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+    .comentarios button {
+      padding: 10px 15px;
+      background: #004080;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .comentarios button:hover {
+      background: #0066cc;
     }
   </style>
 </head>
 <body>
-
   <header>
-    <img src="vision2025.png" alt="Águila Visión 2025">
-    <div>
-      <h1>Edgar Domingo</h1>
-      <span>Asesor Académico</span>
-    </div>
+    <img src="https://i.ibb.co/3hczggZ/Whats-App-Image-2024-09-01-at-13-41-38.jpg" alt="Logo" />
+    <h1>Edgar Domingo – Asesor Académico</h1>
+    <p>Guía personalizada para tu éxito escolar</p>
   </header>
 
   <main>
-    <section id="horario">
-      <h2>Horario de Clases</h2>
-      <table id="tablaHorario">
-        <tr><th>Hora</th><th>Materia</th><th>Profesor(a)</th></tr>
-        <tr data-inicio="7" data-duracion="60" data-hora="07:00"><td>⏳ 07:00</td><td>Psicología del Desarrollo Humano</td><td>Larios Sánchez Karla Teresita</td></tr>
-        <tr data-inicio="8" data-duracion="60" data-hora="08:00"><td>⏳ 08:00</td><td>Literatura II</td><td>Carrillo Quiroz Carlos Elías</td></tr>
-        <tr data-inicio="9" data-duracion="60" data-hora="09:00"><td>⏳ 09:00</td><td>Ética y Desarrollo Humano</td><td>Medina Bastidas José María</td></tr>
-        <tr data-inicio="10" data-duracion="60" data-hora="10:00"><td>⏳ 10:00</td><td>Metodología de la Investigación</td><td>Medina Bastidas José María</td></tr>
-        <tr data-inicio="11.5" data-duracion="60" data-hora="11:30"><td>⏳ 11:30</td><td>Elementos Básicos de Administración</td><td>De la Torre López Maricruz</td></tr>
-        <tr data-inicio="12.5" data-duracion="60" data-hora="12:30"><td>⏳ 12:30</td><td>Hombre, Sociedad y Cultura</td><td>Amador Vega Rosa Icela</td></tr>
-        <tr data-inicio="13.5" data-duracion="60" data-hora="13:30"><td>⏳ 13:30</td><td>Estadística</td><td>Higuera Barrueta José Hilario</td></tr>
-        <tr data-inicio="14" data-duracion="30" data-hora="14:00"><td>⏳ 14:00</td><td>Educación para la Salud</td><td>Camacho Castro Miriam Edith</td></tr>
+    <section class="intro">
+      <h2>Bienvenido</h2>
+      <p>Ofrezco asesorías académicas para estudiantes que buscan mejorar su rendimiento escolar. Aquí encontrarás mi horario disponible, formas de contacto y espacio para comentarios.</p>
+    </section>
+
+    <section>
+      <h2>Horario</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Hora</th>
+            <th>Materia</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-horario">
+          <tr data-hora="8" data-duracion="60"><td>🕗 8:00</td><td>Matemáticas</td><td></td></tr>
+          <tr data-hora="9" data-duracion="60"><td>🕘 9:00</td><td>Física</td><td></td></tr>
+          <tr data-hora="10" data-duracion="60"><td>🕙 10:00</td><td>Historia</td><td></td></tr>
+          <tr data-hora="11" data-duracion="60"><td>🕚 11:00</td><td>Química</td><td></td></tr>
+          <tr data-hora="12" data-duracion="60"><td>🕛 12:00</td><td>Literatura</td><td></td></tr>
+          <tr data-hora="14" data-duracion="30"><td>🕑 14:00</td><td>Biología</td><td></td></tr>
+        </tbody>
       </table>
+    </section>
+
+    <section class="comentarios">
+      <h2>Deja un comentario</h2>
+      <textarea id="comentario" placeholder="Escribe aquí tu comentario..."></textarea>
+      <button onclick="guardarComentario()">Enviar</button>
+      <div id="lista-comentarios"></div>
+    </section>
+
+    <section>
+      <h2>Contacto</h2>
+      <p>Puedes escribirme a: <strong>edomi23@gmail.com</strong></p>
     </section>
   </main>
 
   <footer>
-    <p>Creado por <strong>Edgar Domingo – UAS 2025</strong></p>
-    <p>"Juntos sin dejar a nadie en el camino"</p>
+    <p>&copy; 2024 Edgar Domingo – Todos los derechos reservados</p>
   </footer>
 
   <script>
     function actualizarEstados() {
+      const filas = document.querySelectorAll("#tabla-horario tr");
       const ahora = new Date();
-      const horaActual = ahora.getHours() + ahora.getMinutes()/60;
+      const horaActual = ahora.getHours() + ahora.getMinutes() / 60;
 
-      document.querySelectorAll("#tablaHorario tr[data-inicio]").forEach(tr => {
-        const inicio = parseFloat(tr.dataset.inicio);
-        const duracion = parseFloat(tr.dataset.duracion);
-        const fin = inicio + duracion/60;
-        const horaTexto = tr.dataset.hora;
-        const tdHora = tr.children[0];
+      filas.forEach(tr => {
+        const inicio = parseFloat(tr.dataset.hora);
+        const duracion = parseFloat(tr.dataset.duracion) / 60;
+        const fin = inicio + duracion;
+        const tdHora = tr.children[2];
 
         if (horaActual < inicio) {
-          tdHora.textContent = `⏳ ${horaTexto}`;
+          tdHora.textContent = `⏳ ${tr.children[0].textContent.slice(2).trim()}`;
         } else if (horaActual >= inicio && horaActual < fin) {
-          tdHora.textContent = `➡️ ${horaTexto}`;
+          tdHora.textContent = `➡️ ${tr.children[0].textContent.slice(2).trim()}`;
         } else {
-          tdHora.textContent = `✅ ${horaTexto}`;
+          tdHora.textContent = `✅ ${tr.children[0].textContent.slice(2).trim()}`;
         }
       });
+    }
+
+    function guardarComentario() {
+      const comentario = document.getElementById("comentario").value.trim();
+      if (!comentario) return;
+      const div = document.createElement("div");
+      div.textContent = comentario;
+      document.getElementById("lista-comentarios").appendChild(div);
+      document.getElementById("comentario").value = "";
     }
 
     actualizarEstados();
     setInterval(actualizarEstados, 60000);
   </script>
-
 </body>
 </html>
+
+
