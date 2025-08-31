@@ -8,7 +8,7 @@
     * { box-sizing: border-box; }
 
     body {
-      background-color: #fffde7; /* tono cálido minimalista */
+      background-color: #f0f0f0;
       color: #1a237e;
       font-family: Arial, sans-serif;
       margin: 0;
@@ -32,19 +32,24 @@
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
     }
 
-    header h1 { font-size: 1.3em; margin: 0; }
+    header h1 { font-size: 1.5em; margin: 0; text-transform: uppercase; }
 
     main { padding: 1em; max-width: 900px; margin: auto; }
 
     section {
-      background-color: #fffde7; /* tono cálido */
-      padding: 1em;
+      background-color: #fffde7; /* Amarillo suave y profesional */
+      padding: 1em 1.5em;
       border-radius: 12px;
       margin-bottom: 1.5em;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
 
-    h1, h2 { margin-top: 0; font-weight: 700; }
+    h1, h2 {
+      margin-top: 0;
+      font-weight: 700;
+      text-transform: uppercase; /* Títulos en mayúsculas */
+      color: #1a237e;
+    }
 
     a { color: #1a237e; font-weight: bold; text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -52,7 +57,7 @@
     button {
       width: 100%;
       padding: 0.8em;
-      background-color: #1a237e;
+      background-color: #1a237e; 
       color: #fffde7;
       border: none;
       border-radius: 5px;
@@ -60,6 +65,11 @@
       font-weight: bold;
       font-size: 1em;
       margin-top: 0.5em;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #3949ab;
     }
 
     #comentariosLista p {
@@ -79,8 +89,8 @@
 
     footer {
       text-align: center;
-      background-color: #1a237e; /* azul oscuro */
-      color: #ffeb3b; /* texto amarillo */
+      background-color: #1a237e; 
+      color: #fffde7;
       padding: 2em 1em;
       font-size: 1.1em;
       font-weight: bold;
@@ -97,7 +107,7 @@
 
     #tablaHorario { width:100%; border-collapse: collapse; text-align:left; }
     #tablaHorario th, #tablaHorario td { padding:8px; border-bottom:1px solid #1a237e; }
-    .pendiente { background-color: #fff59d; }
+    .pendiente { background-color: #fff9c4; }
     .enCurso { background-color: #90caf9; font-weight:bold; }
     .terminada { background-color: #a5d6a7; }
   </style>
@@ -165,7 +175,6 @@
   </footer>
 
   <script>
-    // --- Comentarios ---
     const lista = document.getElementById('comentariosLista');
     const comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
     comentariosGuardados.forEach(m => renderComentario(m));
@@ -186,18 +195,15 @@
       lista.appendChild(p);
     }
 
-    // --- Horario dinámico ---
     function actualizarEstados() {
       const filas = document.querySelectorAll('#tablaHorario tr[data-inicio]');
       const ahora = new Date();
       const horaActual = ahora.getHours() + ahora.getMinutes()/60;
-
       filas.forEach(fila => {
         const inicio = parseFloat(fila.dataset.inicio);
         const duracion = parseFloat(fila.dataset.duracion)/60;
         const fin = inicio + duracion;
         const celdaEstado = fila.querySelector('.estado');
-
         if(horaActual < inicio) {
           celdaEstado.textContent = '⏳';
         } else if(horaActual >= inicio && horaActual < fin) {
