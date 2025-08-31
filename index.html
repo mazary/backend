@@ -6,95 +6,26 @@
   <title>Edgar Domingo – Asesor Académico</title>
   <style>
     * { box-sizing: border-box; margin:0; padding:0; }
-    body {
-      background-color: #fffde7;
-      color: #1a237e;
-      font-family: Arial, sans-serif;
-    }
-    header {
-      background-color: #1a237e;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 1em;
-      padding: 1em;
-      flex-wrap: wrap;
-    }
-    header img {
-      width: 120px;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.4);
-    }
-    header h1 {
-      font-size: 2.7em;
-      font-weight: bold;
-      line-height: 1.2;
-    }
-    header span {
-      display: block;
-      font-size: 1.2em;
-      font-weight: normal;
-    }
+    body { background-color: #fffde7; color: #1a237e; font-family: Arial, sans-serif; }
+    header { background-color: #1a237e; color: #fff; display: flex; align-items: center; gap: 1em; padding: 1em; flex-wrap: wrap; }
+    header img { width: 120px; height: auto; border-radius: 10px; box-shadow: 0 0 12px rgba(0,0,0,0.4); }
+    header h1 { font-size: 2.7em; font-weight: bold; line-height: 1.2; }
+    header span { display: block; font-size: 1.2em; font-weight: normal; }
     main { padding: 1em; max-width: 900px; margin: auto; }
-    section {
-      background-color: #fff9c4;
-      padding: 1em;
-      border-radius: 12px;
-      margin-bottom: 1.5em;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    }
+    section { background-color: #fff9c4; padding: 1em; border-radius: 12px; margin-bottom: 1.5em; box-shadow: 0 0 8px rgba(0,0,0,0.1); }
     h1,h2 { margin-top:0; }
     a { color:#1a237e; font-weight:bold; text-decoration:none; }
     a:hover { text-decoration:underline; }
-    button {
-      background-color: #fff9c4;
-      color:#1a237e;
-      border:none;
-      padding:0.7em 1em;
-      border-radius:5px;
-      font-weight:bold;
-      margin-top:0.5em;
-      cursor:pointer;
-    }
-    textarea {
-      width: 100%;
-      padding: 0.7em;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      resize: vertical;
-    }
-    #comentariosLista p {
-      background: #fff3c1;
-      padding: 0.5em 1em;
-      margin: 0.5em 0;
-      border-left: 4px solid #1a237e;
-    }
-    #tablaHorario {
-      width:100%;
-      border-collapse: collapse;
-      text-align:left;
-    }
-    #tablaHorario th, #tablaHorario td {
-      padding:8px;
-      border-bottom:1px solid #1a237e;
-    }
+    button { background-color: #fff9c4; color:#1a237e; border:none; padding:0.7em 1em; border-radius:5px; font-weight:bold; margin-top:0.5em; cursor:pointer; }
+    textarea { width: 100%; padding: 0.7em; border-radius: 6px; border: 1px solid #ccc; resize: vertical; }
+    #comentariosLista p { background: #fff3c1; padding: 0.5em 1em; margin: 0.5em 0; border-left: 4px solid #1a237e; }
+    #tablaHorario { width:100%; border-collapse: collapse; text-align:left; }
+    #tablaHorario th, #tablaHorario td { padding:8px; border-bottom:1px solid #1a237e; }
     .pendiente { background-color: #fff59d; }
     .enCurso { background-color: #90caf9; font-weight:bold; }
     .terminada { background-color: #a5d6a7; }
-    footer {
-      text-align: center;
-      background-color: #1a237e;
-      color: #fffde7;
-      padding: 2em 1em;
-      font-weight: bold;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-    }
-    @media (min-width:600px){
-      header{flex-wrap:nowrap;}
-      button{width:auto;}
-    }
+    footer { text-align: center; background-color: #1a237e; color: #fffde7; padding: 2em 1em; font-weight: bold; border-top-left-radius: 20px; border-top-right-radius: 20px; }
+    @media (min-width:600px){ header{flex-wrap:nowrap;} button{width:auto;} }
   </style>
 </head>
 <body>
@@ -128,7 +59,7 @@
         <tr data-inicio="11.5" data-duracion="60"><td>⏳ 11:30</td><td>Elementos Básicos de Administración</td><td>De la Torre López Maricruz</td></tr>
         <tr data-inicio="12.5" data-duracion="60"><td>⏳ 12:30</td><td>Hombre, Sociedad y Cultura</td><td>Amador Vega Rosa Icela</td></tr>
         <tr data-inicio="13.5" data-duracion="60"><td>⏳ 13:30</td><td>Estadística</td><td>Higuera Barrueta José Hilario</td></tr>
-        <tr data-inicio="14" data-duracion="30"><td>⏳ 14:00</td><td>Educación para la Salud</td><td>Camacho Castro Miriam Edith</td></tr>
+        <tr data-inicio="14.5" data-duracion="30"><td>⏳ 14:30</td><td>Educación para la Salud</td><td>Camacho Castro Miriam Edith</td></tr>
       </table>
     </section>
 
@@ -181,6 +112,13 @@
     }
 
     // --- Horario dinámico corregido ---
+    document.querySelectorAll("#tablaHorario tr[data-inicio]").forEach(tr => {
+      const tdHora = tr.children[0];
+      if (!tdHora.dataset.hora) {
+        tdHora.dataset.hora = tdHora.textContent.replace(/^[⏳➡️✅]\s*/, '');
+      }
+    });
+
     function actualizarEstados() {
       const ahora = new Date();
       const horaActual = ahora.getHours() + ahora.getMinutes()/60;
@@ -190,23 +128,22 @@
         const duracion = parseFloat(tr.dataset.duracion);
         const fin = inicio + duracion/60;
         const tdHora = tr.children[0];
-
-        // Conservamos la hora original sin perderla
-        const textoHora = tdHora.textContent.slice(2).trim();
+        const horaOriginal = tdHora.dataset.hora;
 
         if (horaActual < inicio) {
-          tdHora.textContent = `⏳ ${textoHora}`;
+          tdHora.textContent = `⏳ ${horaOriginal}`;
         } else if (horaActual >= inicio && horaActual < fin) {
-          tdHora.textContent = `➡️ ${textoHora}`;
+          tdHora.textContent = `➡️ ${horaOriginal}`;
         } else {
-          tdHora.textContent = `✅ ${textoHora}`;
+          tdHora.textContent = `✅ ${horaOriginal}`;
         }
       });
     }
 
-    actualizarEstados();
+    document.addEventListener("DOMContentLoaded", actualizarEstados);
     setInterval(actualizarEstados, 60000);
   </script>
 
 </body>
-</html
+</html>
+
