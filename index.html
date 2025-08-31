@@ -8,7 +8,7 @@
     * { box-sizing: border-box; margin:0; padding:0; }
 
     body {
-      background-color: #fffde7; /* amarillo-crema */
+      background-color: #fffde7;
       color: #1a237e;
       font-family: Arial, sans-serif;
     }
@@ -24,28 +24,19 @@
     }
 
     header img {
-      width: 120px; /* un poco más grande */
+      width: 120px;
       height: auto;
       border-radius: 10px;
       box-shadow: 0 0 12px rgba(0,0,0,0.4);
     }
 
-    header h1 {
-      font-size: 2.7em;
-      font-weight: bold;
-      line-height: 1.2;
-    }
-
-    header span {
-      display: block;
-      font-size: 1.2em;
-      font-weight: normal;
-    }
+    header h1 { font-size: 2.7em; font-weight: bold; line-height: 1.2; }
+    header span { display: block; font-size: 1.2em; }
 
     main { padding: 1em; max-width: 900px; margin: auto; }
 
     section {
-      background-color: #fff9c4; /* fondo crema más suave */
+      background-color: #fff9c4;
       padding: 1em;
       border-radius: 12px;
       margin-bottom: 1.5em;
@@ -53,7 +44,6 @@
     }
 
     h1,h2 { margin-top:0; }
-
     a { color:#1a237e; font-weight:bold; text-decoration:none; }
     a:hover { text-decoration:underline; }
 
@@ -77,7 +67,7 @@
     }
 
     #comentariosLista p {
-      background: #fff3c1; /* cálido */
+      background: #fff3c1;
       padding: 0.5em 1em;
       margin: 0.5em 0;
       border-left: 4px solid #1a237e;
@@ -93,10 +83,6 @@
       padding:8px;
       border-bottom:1px solid #1a237e;
     }
-
-    .pendiente { background-color: #fff59d; }
-    .enCurso { background-color: #90caf9; font-weight:bold; }
-    .terminada { background-color: #a5d6a7; }
 
     footer {
       text-align: center;
@@ -125,48 +111,19 @@
   </header>
 
   <main>
-    <section id="introduccion">
-      <p>Hola, soy <strong>Edgar Domingo</strong>, tu asesor académico. Estoy aquí para ayudarte en materias como historia, ciencias, biología y literatura. Si tienes dudas o tareas difíciles, juntos las investigaremos y resolveremos. Esta página es para ti, para nosotros.</p>
-    </section>
-
-    <section id="sobre-mi">
-      <h2>Sobre mí</h2>
-      <p>Soy un apasionado estudiante y asesor académico con un fuerte interés en el desarrollo integral del conocimiento. Mi enfoque combina comprensión profunda de la historia y las ciencias con sensibilidad hacia las necesidades reales de quienes aprenden.</p>
-    </section>
-
     <section id="horario">
       <h2>Horario de Clases</h2>
       <table id="tablaHorario">
         <tr><th>Hora</th><th>Materia</th><th>Profesor(a)</th></tr>
-        <tr data-inicio="7" data-duracion="60"><td>⏳ 07:00</td><td>Psicología del Desarrollo Humano</td><td>Larios Sánchez Karla Teresita</td></tr>
-        <tr data-inicio="8" data-duracion="60"><td>⏳ 08:00</td><td>Literatura II</td><td>Carrillo Quiroz Carlos Elías</td></tr>
-        <tr data-inicio="9" data-duracion="60"><td>⏳ 09:00</td><td>Ética y Desarrollo Humano</td><td>Medina Bastidas José María</td></tr>
-        <tr data-inicio="10" data-duracion="60"><td>⏳ 10:00</td><td>Metodología de la Investigación</td><td>Medina Bastidas José María</td></tr>
-        <tr data-inicio="11.5" data-duracion="60"><td>⏳ 11:30</td><td>Elementos Básicos de Administración</td><td>De la Torre López Maricruz</td></tr>
-        <tr data-inicio="12.5" data-duracion="60"><td>⏳ 12:30</td><td>Hombre, Sociedad y Cultura</td><td>Amador Vega Rosa Icela</td></tr>
-        <tr data-inicio="13.5" data-duracion="60"><td>⏳ 13:30</td><td>Estadística</td><td>Higuera Barrueta José Hilario</td></tr>
-        <tr data-inicio="14" data-duracion="30"><td>⏳ 14:00</td><td>Educación para la Salud</td><td>Camacho Castro Miriam Edith</td></tr>
+        <tr data-inicio="7" data-duracion="60" data-hora="07:00"><td>⏳ 07:00</td><td>Psicología del Desarrollo Humano</td><td>Larios Sánchez Karla Teresita</td></tr>
+        <tr data-inicio="8" data-duracion="60" data-hora="08:00"><td>⏳ 08:00</td><td>Literatura II</td><td>Carrillo Quiroz Carlos Elías</td></tr>
+        <tr data-inicio="9" data-duracion="60" data-hora="09:00"><td>⏳ 09:00</td><td>Ética y Desarrollo Humano</td><td>Medina Bastidas José María</td></tr>
+        <tr data-inicio="10" data-duracion="60" data-hora="10:00"><td>⏳ 10:00</td><td>Metodología de la Investigación</td><td>Medina Bastidas José María</td></tr>
+        <tr data-inicio="11.5" data-duracion="60" data-hora="11:30"><td>⏳ 11:30</td><td>Elementos Básicos de Administración</td><td>De la Torre López Maricruz</td></tr>
+        <tr data-inicio="12.5" data-duracion="60" data-hora="12:30"><td>⏳ 12:30</td><td>Hombre, Sociedad y Cultura</td><td>Amador Vega Rosa Icela</td></tr>
+        <tr data-inicio="13.5" data-duracion="60" data-hora="13:30"><td>⏳ 13:30</td><td>Estadística</td><td>Higuera Barrueta José Hilario</td></tr>
+        <tr data-inicio="14" data-duracion="30" data-hora="14:00"><td>⏳ 14:00</td><td>Educación para la Salud</td><td>Camacho Castro Miriam Edith</td></tr>
       </table>
-    </section>
-
-    <section id="drive">
-      <h2>Asesorías y Tareas</h2>
-      <p>Todas las tareas están en esta carpeta de Drive:</p>
-      <p><a href="https://drive.google.com/drive/folders/1j9v7pfF6XpHF7ePlAslw3KM3E68UMaK_?usp=drive_link" target="_blank">Acceder a Drive</a></p>
-    </section>
-
-    <section id="comentarios">
-      <h2>Comentarios del Salón</h2>
-      <textarea id="comentarioInput" placeholder="Escribe tu mensaje..." rows="3"></textarea>
-      <button onclick="guardarComentario()">Publicar mensaje</button>
-      <div id="comentariosLista"></div>
-    </section>
-
-    <section id="contacto">
-      <h2>Contacto</h2>
-      <p><strong>Correo:</strong> <a href="mailto:colvin0001@gmail.com">colvin0001@gmail.com</a></p>
-      <p><strong>WhatsApp:</strong> <a href="https://wa.me/526677988755" target="_blank">667 798 8755</a></p>
-      <p><strong>Facebook:</strong> <a href="https://www.facebook.com/fromalazka" target="_blank">facebook.com/fromalazka</a></p>
     </section>
   </main>
 
@@ -176,28 +133,6 @@
   </footer>
 
   <script>
-    // --- Comentarios ---
-    const lista = document.getElementById('comentariosLista');
-    const comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
-    comentariosGuardados.forEach(m => renderComentario(m));
-
-    function guardarComentario() {
-      const input = document.getElementById('comentarioInput');
-      const texto = input.value.trim();
-      if (!texto) return;
-      comentariosGuardados.push(texto);
-      localStorage.setItem('comentarios', JSON.stringify(comentariosGuardados));
-      renderComentario(texto);
-      input.value = '';
-    }
-
-    function renderComentario(texto){
-      const p = document.createElement('p');
-      p.textContent = texto;
-      lista.appendChild(p);
-    }
-
-    // --- Horario dinámico ---
     function actualizarEstados() {
       const ahora = new Date();
       const horaActual = ahora.getHours() + ahora.getMinutes()/60;
@@ -206,14 +141,15 @@
         const inicio = parseFloat(tr.dataset.inicio);
         const duracion = parseFloat(tr.dataset.duracion);
         const fin = inicio + duracion/60;
+        const horaTexto = tr.dataset.hora;
         const tdHora = tr.children[0];
 
         if (horaActual < inicio) {
-          tdHora.textContent = `⏳ ${tr.children[0].textContent.slice(2).trim()}`;
+          tdHora.textContent = `⏳ ${horaTexto}`;
         } else if (horaActual >= inicio && horaActual < fin) {
-          tdHora.textContent = `➡️ ${tr.children[0].textContent.slice(2).trim()}`;
+          tdHora.textContent = `➡️ ${horaTexto}`;
         } else {
-          tdHora.textContent = `✅ ${tr.children[0].textContent.slice(2).trim()}`;
+          tdHora.textContent = `✅ ${horaTexto}`;
         }
       });
     }
@@ -224,5 +160,3 @@
 
 </body>
 </html>
-
-
