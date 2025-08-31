@@ -5,139 +5,128 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Edgar Domingo – Asesor Académico</title>
   <style>
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin:0; padding:0; }
 
-    body {
-      background-color: #f0f0f0;
-      color: #1a237e;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
+    body { font-family: Arial, sans-serif; background-color: #fff8dc; color: #fff; }
 
+    /* Header / Título */
     header {
       background-color: #1a237e;
-      color: #fff;
       display: flex;
       align-items: center;
-      gap: 1em;
-      padding: 1em;
-      flex-wrap: wrap;
+      justify-content: center;
+      flex-direction: column;
+      gap: 15px;
+      padding: 2em 1em;
+      text-align: center;
+    }
+    header img { width:160px; height:auto; object-fit:contain; }
+    header h1 {
+      font-size: 2em;
+      font-weight: bold;
+      color: white;
+      margin-top:0.5em;
     }
 
-    header img {
-      width: 120px; /* un poco más grande */
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-    }
-
-    header h1 { font-size: 1.3em; margin: 0; }
-
-    main { padding: 1em; max-width: 900px; margin: auto; }
+    main { max-width:900px; margin:auto; padding:2em 1em; }
 
     section {
-      background-color: #f5f5f5;
-      padding: 1em;
+      background-color: #fff8dc;
+      color: #1a237e;
+      padding: 1.5em;
       border-radius: 12px;
       margin-bottom: 1.5em;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
     }
 
+    h2 { margin-top:0; }
+
+    a { color: #1a237e; text-decoration:none; font-weight:bold; }
+    a:hover { text-decoration:underline; }
+
+    /* Botones estilo UAS */
+    button {
+      padding: 0.8em 1.5em;
+      background-color: #fff8dc;
+      color: #1a237e;
+      border:none;
+      border-radius:6px;
+      font-weight:bold;
+      font-size:1em;
+      cursor:pointer;
+      margin-top:0.5em;
+    }
+    button:hover { background-color:#fff3c4; }
+
     #comentariosLista p {
-      background-color: #fff8dc; /* calidez en comentarios */
-      padding: 0.5em 1em;
-      margin: 0.5em 0;
-      border-left: 4px solid #1a237e;
+      background: #fff7d6;
+      padding:0.5em 1em;
+      margin:0.5em 0;
+      border-left:4px solid #1a237e;
+      color:#1a237e;
     }
 
     textarea {
-      width: 100%;
-      padding: 0.7em;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      resize: vertical;
-      background-color: #fffaf0; /* calidez */
+      width:100%;
+      padding:0.7em;
+      border-radius:6px;
+      border:1px solid #ccc;
+      resize:vertical;
+      color:#1a237e;
     }
 
-    h1, h2 { margin-top: 0; font-weight: 700; }
-
-    a { color: #1a237e; font-weight: bold; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    button {
-      width: 100%;
-      padding: 0.8em;
-      background-color: #1a237e;
-      color: #fffde7;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 1em;
-      margin-top: 0.5em;
-    }
-
-    footer {
-      text-align: center;
-      background-color: #1a237e;
-      color: #ffffff; /* créditos en blanco */
-      padding: 2em 1em;
-      font-size: 1.2em;
-      font-weight: bold;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-    }
-
-    footer img {
-      width: 110px; /* un poco más grande el águila */
-      height: auto;
-      margin-bottom: 10px;
-    }
-
-    main { padding-bottom: 2em; }
-
-    @media (min-width: 600px) {
-      header { flex-wrap: nowrap; }
-      button { width: auto; }
-    }
-
-    #tablaHorario { width:100%; border-collapse: collapse; text-align:left; }
-    #tablaHorario th, #tablaHorario td { padding:8px; border-bottom:1px solid #1a237e; }
+    table { width:100%; border-collapse: collapse; text-align:left; }
+    th, td { padding:8px; border-bottom:1px solid #1a237e; }
     .pendiente { background-color: #fff59d; }
     .enCurso { background-color: #90caf9; font-weight:bold; }
     .terminada { background-color: #a5d6a7; }
 
+    /* Footer */
+    footer {
+      background-color:#1a237e;
+      color:white;
+      text-align:center;
+      padding:2em 1em;
+      border-top-left-radius:20px;
+      border-top-right-radius:20px;
+    }
+    footer img { width:140px; height:auto; object-fit:contain; margin-bottom:15px; }
+    footer p { font-size:1.1em; margin:0.3em 0; }
   </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header>
-    <img src="vision2025.png" alt="Logo de la UAS" />
-    <h1>Edgar Domingo - Asesor Académico</h1>
+    <img src="vision2025.png" alt="Logo de la UAS">
+    <h1>Edgar Domingo – Asesor Académico</h1>
   </header>
 
+  <!-- Main -->
   <main>
     <section id="introduccion">
       <p>Hola, soy <strong>Edgar Domingo</strong>, tu asesor académico. Estoy aquí para ayudarte en materias como historia, ciencias, biología y literatura. Si tienes dudas o tareas difíciles, juntos las investigaremos y resolveremos. Esta página es para ti, para nosotros.</p>
+      <button>Ver Asesorías</button>
     </section>
 
     <section id="sobre-mi">
       <h2>Sobre mí</h2>
       <p>Soy un apasionado estudiante y asesor académico con un fuerte interés en el desarrollo integral del conocimiento. Mi enfoque se basa en combinar una comprensión profunda de la historia y las ciencias con una sensibilidad hacia las necesidades reales de quienes aprenden.</p>
+      <button>Mis Proyectos</button>
     </section>
 
     <section id="horario">
       <h2>Horario de Clases</h2>
-      <table id="tablaHorario">
-        <tr><th>Hora</th><th>Materia</th><th>Profesor(a)</th><th>Estado</th></tr>
-        <tr data-inicio="7" data-duracion="60"><td>07:00</td><td>Psicología del Desarrollo Humano</td><td>Larios Sánchez Karla Teresita</td><td class="estado">⏳</td></tr>
-        <tr data-inicio="8" data-duracion="60"><td>08:00</td><td>Literatura II</td><td>Carrillo Quiroz Carlos Elías</td><td class="estado">⏳</td></tr>
-        <tr data-inicio="9" data-duracion="60"><td>09:00</td><td>Ética y Desarrollo Humano</td><td>Medina Bastidas José María</td><td class="estado">⏳</td></tr>
-        <tr data-inicio="10" data-duracion="60"><td>10:00</td><td>Metodología de la Investigación</td><td>Medina Bastidas José María</td><td class="estado">⏳</td></tr>
-        <tr data-inicio="11.5" data-duracion="60"><td>11:30</td><td>Elementos Básicos de Administración</td><td>De la Torre López Maricruz</td><td class="estado">⏳</td></tr>
-        <tr data-inicio="12.5" data-duracion="60"><td>12:30</td><td>Hombre, Sociedad y Cultura</td><td>Amador Vega Rosa Icela</td><td class="estado">⏳</td></tr>
-        <tr data-inicio="13.5" data-duracion="60"><td>13:30</td><td>Estadística</td><td>Higuera Barrueta José Hilario</td><td class="estado">⏳</td></tr>
-        <tr data-inicio="14" data-duracion="30"><td>14:00</td><td>Educación para la Salud</td><td>Camacho Castro Miriam Edith</td><td class="estado">⏳</td></tr>
+      <table>
+        <tr>
+          <th>Hora</th>
+          <th>Materia</th>
+          <th>Profesor(a)</th>
+          <th>Estado</th>
+        </tr>
+        <tr><td>07:00</td><td>Psicología del Desarrollo Humano</td><td>Larios Sánchez Karla Teresita</td><td>⏳</td></tr>
+        <tr><td>08:00</td><td>Literatura II</td><td>Carrillo Quiroz Carlos Elías</td><td>⏳</td></tr>
+        <tr><td>09:00</td><td>Ética y Desarrollo Humano</td><td>Medina Bastidas José María</td><td>⏳</td></tr>
       </table>
     </section>
 
@@ -162,13 +151,15 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <img src="a4554063-65ae-4b26-86b1-96e23280f419.jpg" alt="Águila">
+    <img src="vision2025.png" alt="Logo de la UAS">
     <p>Creado por <strong>Edgar Domingo</strong> – UAS 2025</p>
     <p>"Juntos sin dejar a nadie en el camino"</p>
   </footer>
 
   <script>
+    // --- Comentarios ---
     const lista = document.getElementById('comentariosLista');
     const comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
     comentariosGuardados.forEach(m => renderComentario(m));
@@ -189,5 +180,6 @@
       lista.appendChild(p);
     }
   </script>
+
 </body>
 </html>
