@@ -8,40 +8,54 @@
     * { box-sizing: border-box; }
 
     body {
-      background-color: #fffde7; /* amarillo suave */
-      color: #1a237e; /* azul tranquilo */
+      background-color: #fffde7;
+      color: #1a237e;
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      font-size: 16px;
+      line-height: 1.5;
     }
 
     header {
-      background-color: #0d1a66; /* azul profundo */
+      background-color: #0d1a66;
       color: #fffde7;
       display: flex;
       align-items: center;
-      gap: 1em;
-      padding: 1em;
+      gap: 0.8em;
+      padding: 0.8em 1em;
       flex-wrap: wrap;
     }
 
+    header img {
+      width: 60px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    }
+
     header h1 {
-      font-size: 1.5em;
+      font-size: 1.2em;
       margin: 0;
       font-weight: bold;
     }
 
-    main { padding: 1em; max-width: 900px; margin: auto; }
+    main {
+      padding: 1em;
+      max-width: 720px;
+      margin: auto;
+    }
 
     section {
-      background-color: #fff9c4; /* amarillo cálido suave */
-      padding: 1em;
+      background-color: #fff9c4;
+      padding: 0.8em 1em;
       border-radius: 12px;
-      margin-bottom: 1.5em;
+      margin-bottom: 1.2em;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
     }
 
-    h1, h2 { margin-top: 0; font-weight: 700; }
+    h1 { font-size: 1.6em; }
+    h2 { font-size: 1.2em; }
 
     a {
       color: #0d1a66;
@@ -52,69 +66,75 @@
 
     button {
       width: 100%;
-      padding: 0.8em;
+      padding: 0.6em;
       background-color: #0d1a66;
       color: #fffde7;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-weight: bold;
-      font-size: 1em;
+      font-size: 0.95em;
       margin-top: 0.5em;
     }
 
     #comentariosLista p {
       background: #fff;
-      padding: 0.5em 1em;
-      margin: 0.5em 0;
+      padding: 0.4em 0.8em;
+      margin: 0.4em 0;
       border-left: 4px solid #0d1a66;
+      font-size: 0.95em;
     }
 
     textarea {
       width: 100%;
-      padding: 0.7em;
+      padding: 0.6em;
       border-radius: 6px;
       border: 1px solid #ccc;
       resize: vertical;
+      font-size: 0.95em;
     }
 
     footer {
       text-align: center;
       background-color: #0d1a66;
       color: #fffde7;
-      padding: 2em 1em;
-      font-size: 1em;
+      padding: 1.5em 1em;
+      font-size: 0.95em;
       font-weight: bold;
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
     }
 
     footer img {
-      width: 90px;
-      height: 90px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       box-shadow: 0 0 6px rgba(0,0,0,0.3);
     }
 
-    footer p:first-child { text-transform: uppercase; font-size: 1.1em; margin: 0.5em 0; }
-    footer p:last-child { font-style: italic; margin: 0.3em 0; }
+    footer p:first-child { text-transform: uppercase; font-size: 1em; margin: 0.4em 0; }
+    footer p:last-child { font-style: italic; margin: 0.2em 0; }
 
-    @media (min-width: 600px) {
-      header { flex-wrap: nowrap; }
-      button { width: auto; }
+    #tablaHorario { width: 100%; border-collapse: collapse; margin-top: 0.5em; font-size: 0.95em; }
+    #tablaHorario th, #tablaHorario td { padding: 6px; border-bottom: 1px solid #0d1a66; text-align: left; }
+    .estado { text-align: center; width: 50px; }
+
+    @media (max-width: 600px) {
+      header { flex-wrap: wrap; }
+      header h1 { font-size: 1em; }
+      header img { width: 50px; }
+      button { font-size: 0.9em; padding: 0.5em; }
+      section { padding: 0.6em 0.8em; }
+      #tablaHorario th, #tablaHorario td { font-size: 0.9em; padding: 4px; }
     }
-
-    #tablaHorario { width: 100%; border-collapse: collapse; margin-top: 0.5em; }
-    #tablaHorario th, #tablaHorario td { padding: 8px; border-bottom: 1px solid #0d1a66; text-align: left; }
-    .estado { text-align: center; width: 60px; }
   </style>
 </head>
 <body>
 
   <header>
-    <img src="vision2025.png" alt="Águila de Edgar Domingo" />
+    <img src="vision2025.png" alt="Logo de la UAS" />
     <h1>Edgar Domingo - Asesor Académico</h1>
   </header>
 
@@ -170,13 +190,12 @@
   </main>
 
   <footer>
-    <img src="vision2025.png" alt="Águila de Edgar Domingo">
+    <img src="a4554063-65ae-4b26-86b1-96e23280f419.jpg" alt="Edgar Domingo">
     <p>Creado por <strong>Edgar Domingo</strong> – UAS 2025</p>
     <p>"Juntos, sin dejar a nadie en el camino."</p>
   </footer>
 
   <script>
-    // --- Comentarios ---
     const lista = document.getElementById('comentariosLista');
     const comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
     comentariosGuardados.forEach(m => renderComentario(m));
@@ -197,7 +216,6 @@
       lista.appendChild(p);
     }
 
-    // --- Horario dinámico ---
     function actualizarEstados() {
       const filas = document.querySelectorAll('#tablaHorario tr[data-inicio]');
       const ahora = new Date();
@@ -221,7 +239,5 @@
 
     actualizarEstados();
   </script>
-
 </body>
 </html>
-
