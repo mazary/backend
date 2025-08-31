@@ -13,38 +13,32 @@
       font-family: Arial, sans-serif;
     }
 
-   header {
-  background-color: #1a237e; /* azul del header, no se quita */
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 1em;
-  padding: 1em;
-  flex-wrap: wrap;
-}
+    header {
+      background-color: #1a237e;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 1em;
+      padding: 1em;
+      flex-wrap: wrap;
+    }
 
-header img {
-  width: 120px; /* un poco más grande */
-  height: auto;
-  border-radius: 10px; /* bordes suaves */
-  box-shadow: 0 0 12px rgba(0,0,0,0.4); /* sombra más marcada */
-}
+    header img {
+      width: 120px; /* un poco más grande */
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    }
 
-header h1 {
-  font-size: 2.7em; /* nombre más grande */
-  font-weight: bold;
-  line-height: 1.2;
-}
-
-header span {
-  font-size: 1.2em; /* antes 1em, ligeramente más grande */
-  font-weight: normal;
-}
-
+    header h1 {
+      font-size: 2.7em;
+      font-weight: bold;
+      line-height: 1.2;
+    }
 
     header span {
       display: block;
-      font-size: 1em;
+      font-size: 1.2em;
       font-weight: normal;
     }
 
@@ -107,7 +101,7 @@ header span {
     footer {
       text-align: center;
       background-color: #1a237e;
-      color: #fffde7; /* blanco hueso */
+      color: #fffde7;
       padding: 2em 1em;
       font-weight: bold;
       border-top-left-radius: 20px;
@@ -144,14 +138,14 @@ header span {
       <h2>Horario de Clases</h2>
       <table id="tablaHorario">
         <tr><th>Hora</th><th>Materia</th><th>Profesor(a)</th></tr>
-        <tr><td>07:00</td><td>Psicología del Desarrollo Humano</td><td>Larios Sánchez Karla Teresita</td></tr>
-        <tr><td>08:00</td><td>Literatura II</td><td>Carrillo Quiroz Carlos Elías</td></tr>
-        <tr><td>09:00</td><td>Ética y Desarrollo Humano</td><td>Medina Bastidas José María</td></tr>
-        <tr><td>10:00</td><td>Metodología de la Investigación</td><td>Medina Bastidas José María</td></tr>
-        <tr><td>11:30</td><td>Elementos Básicos de Administración</td><td>De la Torre López Maricruz</td></tr>
-        <tr><td>12:30</td><td>Hombre, Sociedad y Cultura</td><td>Amador Vega Rosa Icela</td></tr>
-        <tr><td>13:30</td><td>Estadística</td><td>Higuera Barrueta José Hilario</td></tr>
-        <tr><td>14:00</td><td>Educación para la Salud</td><td>Camacho Castro Miriam Edith</td></tr>
+        <tr data-inicio="7" data-duracion="60"><td>⏳ 07:00</td><td>Psicología del Desarrollo Humano</td><td>Larios Sánchez Karla Teresita</td></tr>
+        <tr data-inicio="8" data-duracion="60"><td>⏳ 08:00</td><td>Literatura II</td><td>Carrillo Quiroz Carlos Elías</td></tr>
+        <tr data-inicio="9" data-duracion="60"><td>⏳ 09:00</td><td>Ética y Desarrollo Humano</td><td>Medina Bastidas José María</td></tr>
+        <tr data-inicio="10" data-duracion="60"><td>⏳ 10:00</td><td>Metodología de la Investigación</td><td>Medina Bastidas José María</td></tr>
+        <tr data-inicio="11.5" data-duracion="60"><td>⏳ 11:30</td><td>Elementos Básicos de Administración</td><td>De la Torre López Maricruz</td></tr>
+        <tr data-inicio="12.5" data-duracion="60"><td>⏳ 12:30</td><td>Hombre, Sociedad y Cultura</td><td>Amador Vega Rosa Icela</td></tr>
+        <tr data-inicio="13.5" data-duracion="60"><td>⏳ 13:30</td><td>Estadística</td><td>Higuera Barrueta José Hilario</td></tr>
+        <tr data-inicio="14" data-duracion="30"><td>⏳ 14:00</td><td>Educación para la Salud</td><td>Camacho Castro Miriam Edith</td></tr>
       </table>
     </section>
 
@@ -202,10 +196,33 @@ header span {
       p.textContent = texto;
       lista.appendChild(p);
     }
+
+    // --- Horario dinámico ---
+    function actualizarEstados() {
+      const ahora = new Date();
+      const horaActual = ahora.getHours() + ahora.getMinutes()/60;
+
+      document.querySelectorAll("#tablaHorario tr[data-inicio]").forEach(tr => {
+        const inicio = parseFloat(tr.dataset.inicio);
+        const duracion = parseFloat(tr.dataset.duracion);
+        const fin = inicio + duracion/60;
+        const tdHora = tr.children[0];
+
+        if (horaActual < inicio) {
+          tdHora.textContent = `⏳ ${tr.children[0].textContent.slice(2).trim()}`;
+        } else if (horaActual >= inicio && horaActual < fin) {
+          tdHora.textContent = `➡️ ${tr.children[0].textContent.slice(2).trim()}`;
+        } else {
+          tdHora.textContent = `✅ ${tr.children[0].textContent.slice(2).trim()}`;
+        }
+      });
+    }
+
+    actualizarEstados();
+    setInterval(actualizarEstados, 60000);
   </script>
 
 </body>
 </html>
-
 
 
