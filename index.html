@@ -8,7 +8,7 @@
     * { box-sizing: border-box; }
 
     body {
-      background-color: #f0f0f0;
+      background-color: #fffde7; /* amarillo muy suave de fondo general */
       color: #1a237e;
       font-family: Arial, sans-serif;
       margin: 0;
@@ -16,8 +16,8 @@
     }
 
     header {
-      background-color: #1a237e;
-      color: #fff;
+      background-color: #0d1a66; /* azul tranquilo */
+      color: #fffde7;
       display: flex;
       align-items: center;
       gap: 1em;
@@ -25,34 +25,36 @@
       flex-wrap: wrap;
     }
 
-    header img {
-      width: 100px;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    header h1 {
+      font-size: 1.4em;
+      margin: 0;
+      font-weight: bold;
     }
-
-    header h1 { font-size: 1.3em; margin: 0; }
 
     main { padding: 1em; max-width: 900px; margin: auto; }
 
     section {
-      background-color: #fff8dc; /* amarillo cálido */
+      background-color: #fff9c4; /* amarillo cálido suave */
       padding: 1em;
       border-radius: 12px;
       margin-bottom: 1.5em;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
     }
 
     h1, h2 { margin-top: 0; font-weight: 700; }
 
-    a { color: #1a237e; font-weight: bold; text-decoration: none; }
+    a {
+      color: #0d1a66;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
     a:hover { text-decoration: underline; }
 
     button {
       width: 100%;
       padding: 0.8em;
-      background-color: #1a237e;
+      background-color: #0d1a66;
       color: #fffde7;
       border: none;
       border-radius: 5px;
@@ -66,7 +68,7 @@
       background: #fff;
       padding: 0.5em 1em;
       margin: 0.5em 0;
-      border-left: 4px solid #1a237e;
+      border-left: 4px solid #0d1a66;
     }
 
     textarea {
@@ -79,33 +81,32 @@
 
     footer {
       text-align: center;
-      background-color: #3949ab; /* azul suave */
+      background-color: #0d1a66;
       color: #fffde7;
       padding: 2em 1em;
-      font-size: 1.1em;
+      font-size: 1em;
       font-weight: bold;
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
     }
 
-    main { padding-bottom: 2em; }
+    footer p:first-child { text-transform: uppercase; font-size: 1.1em; margin: 0.5em 0; }
+    footer p:last-child { font-style: italic; margin: 0.3em 0; }
 
     @media (min-width: 600px) {
       header { flex-wrap: nowrap; }
       button { width: auto; }
     }
 
-    #tablaHorario { width:100%; border-collapse: collapse; text-align:left; }
-    #tablaHorario th, #tablaHorario td { padding:8px; border-bottom:1px solid #1a237e; }
-    .pendiente { background-color: #fff59d; }
-    .enCurso { background-color: #90caf9; font-weight:bold; }
-    .terminada { background-color: #a5d6a7; }
+    #tablaHorario { width: 100%; border-collapse: collapse; margin-top: 0.5em; }
+    #tablaHorario th, #tablaHorario td { padding: 8px; border-bottom: 1px solid #0d1a66; text-align: left; }
+    .estado { text-align: center; width: 60px; }
   </style>
 </head>
 <body>
+
   <header>
-    <img src="vision2025.png" alt="Logo de la UAS" />
-    <h1>EDGAR DOMINGO - ASESOR ACADÉMICO</h1>
+    <h1>Edgar Domingo - Asesor Académico</h1>
   </header>
 
   <main>
@@ -115,7 +116,7 @@
 
     <section id="sobre-mi">
       <h2>Sobre mí</h2>
-      <p>Soy un apasionado estudiante y asesor académico con un fuerte interés en el desarrollo integral del conocimiento. Mi enfoque se basa en combinar una comprensión profunda de la historia y las ciencias con una sensibilidad hacia las necesidades reales de quienes aprenden.</p>
+      <p>Soy un apasionado estudiante y asesor académico con un fuerte interés en el desarrollo integral del conocimiento. Mi enfoque combina la historia y las ciencias con la sensibilidad hacia las necesidades reales de quienes aprenden.</p>
     </section>
 
     <section id="horario">
@@ -125,7 +126,7 @@
           <th>Hora</th>
           <th>Materia</th>
           <th>Profesor(a)</th>
-          <th>Estado</th>
+          <th class="estado">Estado</th>
         </tr>
         <tr data-inicio="7" data-duracion="60"><td>07:00</td><td>Psicología del Desarrollo Humano</td><td>Larios Sánchez Karla Teresita</td><td class="estado">⏳</td></tr>
         <tr data-inicio="8" data-duracion="60"><td>08:00</td><td>Literatura II</td><td>Carrillo Quiroz Carlos Elías</td><td class="estado">⏳</td></tr>
@@ -160,8 +161,8 @@
   </main>
 
   <footer>
-    <p>Creado por <strong>EDGAR DOMINGO</strong> – UAS 2025</p>
-    <p>"JUNTOS SIN DEJAR A NADIE EN EL CAMINO"</p>
+    <p>Creado por <strong>Edgar Domingo</strong> – UAS 2025</p>
+    <p>"Juntos, sin dejar a nadie en el camino."</p>
   </footer>
 
   <script>
@@ -212,4 +213,3 @@
   </script>
 </body>
 </html>
-
