@@ -98,9 +98,7 @@
       font-style: normal;
     }
 
-    main {
-      padding-bottom: 2em; /* deja espacio entre contenido y footer */
-    }
+    main { padding-bottom: 2em; }
 
     @media (min-width: 600px) {
       header { flex-wrap: nowrap; }
@@ -134,59 +132,16 @@
       <h2>Horario de Clases</h2>
       <table id="tablaHorario">
         <tr>
-          <th>Hora</th>
-          <th>Materia</th>
-          <th>Profesor(a)</th>
-          <th>Estado</th>
+          <th>Hora</th><th>Materia</th><th>Profesor(a)</th><th>Estado</th>
         </tr>
-        <tr data-inicio="7" data-duracion="60">
-          <td>07:00</td>
-          <td>Psicología del Desarrollo Humano</td>
-          <td>Larios Sánchez Karla Teresita</td>
-          <td class="estado">⏳</td>
-        </tr>
-        <tr data-inicio="8" data-duracion="60">
-          <td>08:00</td>
-          <td>Literatura II</td>
-          <td>Carrillo Quiroz Carlos Elías</td>
-          <td class="estado">⏳</td>
-        </tr>
-        <tr data-inicio="9" data-duracion="60">
-          <td>09:00</td>
-          <td>Ética y Desarrollo Humano</td>
-          <td>Medina Bastidas José María</td>
-          <td class="estado">⏳</td>
-        </tr>
-        <tr data-inicio="10" data-duracion="60">
-          <td>10:00</td>
-          <td>Metodología de la Investigación</td>
-          <td>Medina Bastidas José María</td>
-          <td class="estado">⏳</td>
-        </tr>
-        <tr data-inicio="11.5" data-duracion="60">
-          <td>11:30</td>
-          <td>Elementos Básicos de Administración</td>
-          <td>De la Torre López Maricruz</td>
-          <td class="estado">⏳</td>
-        </tr>
-        <tr data-inicio="12.5" data-duracion="60">
-          <td>12:30</td>
-          <td>Hombre, Sociedad y Cultura</td>
-          <td>Amador Vega Rosa Icela</td>
-          <td class="estado">⏳</td>
-        </tr>
-        <tr data-inicio="13.5" data-duracion="60">
-          <td>13:30</td>
-          <td>Estadística</td>
-          <td>Higuera Barrueta José Hilario</td>
-          <td class="estado">⏳</td>
-        </tr>
-        <tr data-inicio="14" data-duracion="30">
-          <td>14:00</td>
-          <td>Educación para la Salud</td>
-          <td>Camacho Castro Miriam Edith</td>
-          <td class="estado">⏳</td>
-        </tr>
+        <tr data-inicio="7" data-duracion="60"><td>07:00</td><td>Psicología del Desarrollo Humano</td><td>Larios Sánchez Karla Teresita</td><td class="estado">⏳</td></tr>
+        <tr data-inicio="8" data-duracion="60"><td>08:00</td><td>Literatura II</td><td>Carrillo Quiroz Carlos Elías</td><td class="estado">⏳</td></tr>
+        <tr data-inicio="9" data-duracion="60"><td>09:00</td><td>Ética y Desarrollo Humano</td><td>Medina Bastidas José María</td><td class="estado">⏳</td></tr>
+        <tr data-inicio="10" data-duracion="60"><td>10:00</td><td>Metodología de la Investigación</td><td>Medina Bastidas José María</td><td class="estado">⏳</td></tr>
+        <tr data-inicio="11.5" data-duracion="60"><td>11:30</td><td>Elementos Básicos de Administración</td><td>De la Torre López Maricruz</td><td class="estado">⏳</td></tr>
+        <tr data-inicio="12.5" data-duracion="60"><td>12:30</td><td>Hombre, Sociedad y Cultura</td><td>Amador Vega Rosa Icela</td><td class="estado">⏳</td></tr>
+        <tr data-inicio="13.5" data-duracion="60"><td>13:30</td><td>Estadística</td><td>Higuera Barrueta José Hilario</td><td class="estado">⏳</td></tr>
+        <tr data-inicio="14" data-duracion="30"><td>14:00</td><td>Educación para la Salud</td><td>Camacho Castro Miriam Edith</td><td class="estado">⏳</td></tr>
       </table>
     </section>
 
@@ -211,8 +166,58 @@
     </section>
   </main>
 
-  <footer>
-    <p style="margin:0.3em 0; font-size:1.2em; color:#ffeb3b; font-weight:bold;"><em>"Juntos sin dejar a nadie en el camino"</em></p>
+  <footer style="background-color:#1a237e; color:#ffeb3b; text-align:center; padding:2em 1em; font-size:1.2em; font-weight:bold;">
+    <p style="margin:0.3em 0;">Creado por <strong>Edgar Domingo</strong> – UAS 2025</p>
+    <p style="margin:0.3em 0; font-size:1em; font-style:italic;">"Juntos sin dejar a nadie en el camino"</p>
   </footer>
+
+  <script>
+    // Comentarios
+    const lista = document.getElementById('comentariosLista');
+    const comentariosGuardados = JSON.parse(localStorage.getItem('comentarios')) || [];
+    comentariosGuardados.forEach(m => renderComentario(m));
+
+    function guardarComentario() {
+      const input = document.getElementById('comentarioInput');
+      const texto = input.value.trim();
+      if (!texto) return;
+      comentariosGuardados.push(texto);
+      localStorage.setItem('comentarios', JSON.stringify(comentariosGuardados));
+      renderComentario(texto);
+      input.value = '';
+    }
+
+    function renderComentario(texto) {
+      const p = document.createElement('p');
+      p.textContent = texto;
+      lista.appendChild(p);
+    }
+
+    // Horario dinámico con emojis
+    function actualizarEstados() {
+      const filas = document.querySelectorAll('#tablaHorario tr[data-inicio]');
+      const ahora = new Date();
+      const horaActual = ahora.getHours() + ahora.getMinutes()/60;
+
+      filas.forEach(fila => {
+        const inicio = parseFloat(fila.dataset.inicio);
+        const duracion = parseFloat(fila.dataset.duracion)/60; // convertir a horas
+        const fin = inicio + duracion;
+        const celdaEstado = fila.querySelector('.estado');
+
+        if(horaActual < inicio) {
+          celdaEstado.textContent = '⏳'; // pendiente
+        } else if(horaActual >= inicio && horaActual < fin) {
+          celdaEstado.textContent = '▶️'; // en curso
+        } else {
+          celdaEstado.textContent = '✅'; // terminada
+        }
+      });
+    }
+
+    // Actualizar cada minuto
+    actualizarEstados();
+    setInterval(actualizarEstados, 60000);
+  </script>
 </body>
 </html>
