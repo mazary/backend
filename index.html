@@ -26,7 +26,7 @@
     }
 
     header img {
-      width: 100px;
+      width: 120px; /* un poco más grande */
       height: auto;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
@@ -42,6 +42,22 @@
       border-radius: 12px;
       margin-bottom: 1.5em;
       box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    #comentariosLista p {
+      background-color: #fff8dc; /* calidez en comentarios */
+      padding: 0.5em 1em;
+      margin: 0.5em 0;
+      border-left: 4px solid #1a237e;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 0.7em;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      resize: vertical;
+      background-color: #fffaf0; /* calidez */
     }
 
     h1, h2 { margin-top: 0; font-weight: 700; }
@@ -62,45 +78,21 @@
       margin-top: 0.5em;
     }
 
-    #comentariosLista {
-      background-color: #fff8e1; /* cálido */
-      padding: 1em;
-      border-radius: 8px;
-    }
-
-    #comentariosLista p {
-      background-color: #fffde7; /* mensaje contraste */
-      border-left: 4px solid #1a237e;
-      padding: 0.5em 1em;
-      margin: 0.5em 0;
-    }
-
-    textarea {
-      width: 100%;
-      padding: 0.7em;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      resize: vertical;
-    }
-
     footer {
       text-align: center;
       background-color: #1a237e;
+      color: #ffffff; /* créditos en blanco */
       padding: 2em 1em;
-      font-size: 1.1em;
+      font-size: 1.2em;
       font-weight: bold;
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
-      color: white;
     }
 
     footer img {
-      width: 100px; /* un poco más grande */
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
+      width: 110px; /* un poco más grande el águila */
+      height: auto;
       margin-bottom: 10px;
-      box-shadow: 0 0 6px rgba(0,0,0,0.3);
     }
 
     main { padding-bottom: 2em; }
@@ -115,6 +107,7 @@
     .pendiente { background-color: #fff59d; }
     .enCurso { background-color: #90caf9; font-weight:bold; }
     .terminada { background-color: #a5d6a7; }
+
   </style>
 </head>
 <body>
@@ -136,12 +129,7 @@
     <section id="horario">
       <h2>Horario de Clases</h2>
       <table id="tablaHorario">
-        <tr>
-          <th>Hora</th>
-          <th>Materia</th>
-          <th>Profesor(a)</th>
-          <th>Estado</th>
-        </tr>
+        <tr><th>Hora</th><th>Materia</th><th>Profesor(a)</th><th>Estado</th></tr>
         <tr data-inicio="7" data-duracion="60"><td>07:00</td><td>Psicología del Desarrollo Humano</td><td>Larios Sánchez Karla Teresita</td><td class="estado">⏳</td></tr>
         <tr data-inicio="8" data-duracion="60"><td>08:00</td><td>Literatura II</td><td>Carrillo Quiroz Carlos Elías</td><td class="estado">⏳</td></tr>
         <tr data-inicio="9" data-duracion="60"><td>09:00</td><td>Ética y Desarrollo Humano</td><td>Medina Bastidas José María</td><td class="estado">⏳</td></tr>
@@ -175,7 +163,7 @@
   </main>
 
   <footer>
-    <img src="a4554063-65ae-4b26-86e23280f419.jpg" alt="Edgar Domingo" />
+    <img src="a4554063-65ae-4b26-86b1-96e23280f419.jpg" alt="Águila">
     <p>Creado por <strong>Edgar Domingo</strong> – UAS 2025</p>
     <p>"Juntos sin dejar a nadie en el camino"</p>
   </footer>
@@ -203,9 +191,3 @@
   </script>
 </body>
 </html>
-
-      comentariosGuardados.push(texto);
-      localStorage.setItem('comentarios', JSON.stringify(comentariosGuardados));
-      renderComentario(texto);
-
-    actualizarEstados(); 
